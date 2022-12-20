@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     RecyclerView rvListaServiciosPub;
     ArrayList<serviciosList> listaServicios;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                     listaServicios.add(new serviciosList(img, titulo, descripcion, precio));
                                 }
 
-                                adaptador = new Adaptador(getApplicationContext(), listaServicios);
+                                adaptador = new Adaptador(getApplicationContext(), listaServicios, MainActivity.this);
                                 rvListaServiciosPub.setAdapter(adaptador);
 
                                 adaptador.notifyDataSetChanged();
@@ -93,5 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
         requestQueue.add(stringRequest);
 
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        String titulo = listaServicios.get(position).getTitulo();
+        Toast.makeText(this, titulo, Toast.LENGTH_LONG).show();
     }
 }

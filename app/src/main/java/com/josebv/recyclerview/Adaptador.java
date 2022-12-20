@@ -17,13 +17,15 @@ import java.util.ArrayList;
 
 public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
+    private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     ArrayList<serviciosList> listaServicios;
     String URL_IMG_SERVICIOS = "https://homecareplus.vercel.app/static/images/services/";
 
-    public Adaptador(Context context, ArrayList<serviciosList> listaServicios) {
+    public Adaptador(Context context, ArrayList<serviciosList> listaServicios, RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.listaServicios = listaServicios;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -64,6 +66,21 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
             titulo = itemView.findViewById(R.id.titulo);
             descripcion = itemView.findViewById(R.id.descripcion);
             precio = itemView.findViewById(R.id.precio);
+
+            // Se añade para detectar un clic en el item
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
         }
     }
 }
