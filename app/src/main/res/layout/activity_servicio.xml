@@ -11,7 +11,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginHorizontal="15dp"
         android:layout_marginVertical="25dp"
@@ -34,7 +34,7 @@
             android:layout_marginVertical="18dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Titulo del servicio" />
+            android:text="Cargando..." />
 
         <TextView
             android:id="@+id/tvDescripcion"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/grisOscuro"
-            android:text="Lorem ipsum..." />
+            android:text="Cargando..." />
 
         <TextView
             android:layout_width="match_parent"
@@ -58,7 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgPrestador"
@@ -67,6 +69,7 @@
                 app:shapeAppearanceOverlay="@style/CircleImage"
                 android:elevation="5dp"
                 android:padding="5dp"
+                android:layout_gravity="center"
                 android:src="@drawable/default_user"/>
 
             <!-- Nombre, profesion y calificacion -->
@@ -76,7 +79,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_marginLeft="15dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <TextView
                     android:id="@+id/tvNombrePrestador"
@@ -85,7 +89,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:text="Nombre del prestador" />
+                    android:text="Cargando..." />
 
                 <TextView
                     android:id="@+id/tvInfoPrestador"
@@ -93,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textColor="@color/grisOscuro"
-                    android:text="Profesión" />
+                    android:text="Cargando..." />
 
             </LinearLayout>
 
@@ -105,9 +109,9 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:layout_marginLeft="15dp"
-                android:text="$99" />
+                android:text="Cargando..." />
 
         </LinearLayout>
 

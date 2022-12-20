@@ -2,17 +2,21 @@ package com.josebv.recyclerview;
 
 public class serviciosList {
 
+    private String id;
     private String imagen;
     private String titulo;
     private String descripcion;
     private String precio;
 
-    public serviciosList(String imagen, String titulo, String descripcion, String precio) {
+    public serviciosList(String id, String imagen, String titulo, String descripcion, String precio) {
+        this.id = id;
         this.imagen = imagen;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.precio = precio;
     }
+
+    public String getId() { return id; }
 
     public String getImagen() {
         return imagen;

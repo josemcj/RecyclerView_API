@@ -41,6 +41,9 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     public void onBindViewHolder(@NonNull Adaptador.ViewHolder holder, int position) {
         serviciosList servicio = listaServicios.get(position);
 
+        // Se asigna el ID del servicio
+        holder.id = servicio.getId();
+
         // Cargar imagen desde la API
         Picasso.get().load(URL_IMG_SERVICIOS + servicio.getImagen()).into(holder.imgServicio);
 
@@ -56,6 +59,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        String id;
         ShapeableImageView imgServicio;
         TextView titulo, descripcion, precio;
 

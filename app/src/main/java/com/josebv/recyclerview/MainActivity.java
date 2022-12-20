@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -66,12 +67,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
                                 for (int i = 0; i < datos.length(); i++) {
                                     JSONObject servicio = datos.getJSONObject(i);
+
+                                    String id = servicio.getString("_id");
                                     String img = servicio.getString("imagen");
                                     String titulo = servicio.getString("titulo");
                                     String descripcion = servicio.getString("descripcion");
                                     String precio = servicio.getString("precio");
 
-                                    listaServicios.add(new serviciosList(img, titulo, descripcion, precio));
+                                    listaServicios.add(new serviciosList(id, img, titulo, descripcion, precio));
                                 }
 
                                 adaptador = new Adaptador(getApplicationContext(), listaServicios, MainActivity.this);
@@ -95,9 +98,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     }
 
+    // Abrir la activity de Detalles del servicio, enviandole el ID
     @Override
     public void onItemClick(int position) {
-        String titulo = listaServicios.get(position).getTitulo();
-        Toast.makeText(this, titulo, Toast.LENGTH_LONG).show();
+        String idServicio = listaServicios.get(position).getId();
+
+        Intent abrirServicio = new Intent(this, ServicioActivity.class);
+        abrirServicio.putExtra("idServicio", idServicio);
+
+        startActivity(abrirServicio);
     }
 }
