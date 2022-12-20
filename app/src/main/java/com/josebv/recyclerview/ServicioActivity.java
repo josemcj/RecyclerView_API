@@ -18,6 +18,8 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+
 public class ServicioActivity extends AppCompatActivity {
 
     ShapeableImageView ivImgServicio, ivImgPrestador;
@@ -102,10 +104,13 @@ public class ServicioActivity extends AppCompatActivity {
     }
 
     private void insertarDatos(String titulo, String imgServicio, String descripcion, String precio, String nombrePrestador, String profesionPrestador, String imgPrestador) {
+        // Formatear numeros por miles
+        DecimalFormat formato = new DecimalFormat("$###,###,###.##");
+        Double precioServicio = Double.parseDouble(precio);
 
         tvTitulo.setText(titulo);
         tvDescripcion.setText(descripcion);
-        tvPrecio.setText("$" + precio);
+        tvPrecio.setText( formato.format(precioServicio) );
         tvNombrePrestador.setText(nombrePrestador);
         tvInfoPrestador.setText(profesionPrestador);
 
